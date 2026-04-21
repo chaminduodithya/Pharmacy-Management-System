@@ -21,6 +21,7 @@ public class Medicine extends javax.swing.JFrame {
     public Medicine() {
         initComponents();
         SelectMed();
+        GetCompany();
     }
 
     Connection Con = null;
@@ -308,7 +309,22 @@ public class Medicine extends javax.swing.JFrame {
         catch(SQLException e){
             e.printStackTrace();
         }
-        
+    }
+    
+    public void GetCompany(){
+        try{
+            Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/phdb", "root", "");
+            St = Con.createStatement();
+            String query = "select * from phdb.company";
+            Rs = St.executeQuery(query);
+            while(Rs.next()){
+                String MyComp = Rs.getString("CompName");
+                CompCb.addItem(MyComp);
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
     }
             
     
