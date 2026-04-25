@@ -154,6 +154,8 @@ public class Agents extends javax.swing.JFrame {
                 "Id", "Name", "Age", "Phone", "Pass", "Gender"
             }
         ));
+        AgentTable.setShowGrid(true);
+        AgentTable.setSurrendersFocusOnKeystroke(true);
         AgentTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AgentTableMouseClicked(evt);

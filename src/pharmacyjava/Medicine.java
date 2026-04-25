@@ -127,7 +127,19 @@ public class Medicine extends javax.swing.JFrame {
             new String [] {
                 "ID", "Med Name", "Price", "Quantity", "FabDate", "ExpDate", "Company"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        MedicineTable.setShowGrid(true);
+        MedicineTable.setShowHorizontalLines(true);
+        MedicineTable.setShowVerticalLines(true);
+        MedicineTable.setSurrendersFocusOnKeystroke(true);
         MedicineTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MedicineTableMouseClicked(evt);

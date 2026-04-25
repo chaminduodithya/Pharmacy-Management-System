@@ -138,6 +138,8 @@ public class Company extends javax.swing.JFrame {
                 "Id", "Name", "Address", "Experience", "Phone"
             }
         ));
+        CompanyTable.setShowGrid(true);
+        CompanyTable.setSurrendersFocusOnKeystroke(true);
         CompanyTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CompanyTableMouseClicked(evt);
@@ -282,16 +284,11 @@ public class Company extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton4)))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 642, Short.MAX_VALUE)
                 .addContainerGap())
@@ -384,7 +381,7 @@ public class Company extends javax.swing.JFrame {
             try{
                 Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/phdb", "root", "");
                 String Id = CompId.getText();
-                String Query = "Delete from phdb.company where AId="+Id;
+                String Query = "Delete from phdb.company where CompId="+Id;
                 Statement Add = Con.createStatement();
                 Add.executeUpdate(Query);
                 SelectMed();
